@@ -20,3 +20,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           find: '%BRANCH%'
           replace: '${{ github.repository_owner }}:${{ github.event.repository.name }}:${{ github.head_ref }}'
+  
+      - name: PR description replace
+        uses: kaskar2008/action-pr-description-replace@v1.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          find: '%BRANCH%'
+          replace: '${{ github.repository_owner }}:${{ github.event.repository.name }}:${{ github.head_ref }}'
