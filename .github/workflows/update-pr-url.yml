@@ -2,7 +2,7 @@ name: Creates and Updates PR
 on:
   push:
     branches:
-    - some-branch
+    - 'releases/**'
 jobs:
   pull-request:
     runs-on: ubuntu-latest
