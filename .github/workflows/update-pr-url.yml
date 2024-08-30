@@ -1,23 +1,21 @@
-name: Update PR with URL
-
+name: Creates and Updates PR
 on:
-  pull_request:
-    types: [opened, edited, synchronize]
-
+  push:
+    branches:
+    - some-branch
 jobs:
-  update-pr-url:
+  pull-request:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Update PR description with URL
-        uses: peter-evans/update-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request: ${{ github.event.pull_request.number }}
-          body: |
+    - uses: actions/checkout@v3
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: update-pull-request
+      uses: kt3k/update-pr-description@v2
+      with:
+        pr_body: |
             ## Description
 
             Please include a summary of the changes and the related issue.
@@ -25,3 +23,4 @@ jobs:
             ## Related URL
 
             [Your URL here](https://example.com/some-url?pr=${{ github.event.pull_request.number }})
+        github_token: ${{ secrets.GITHUB_TOKEN }}
