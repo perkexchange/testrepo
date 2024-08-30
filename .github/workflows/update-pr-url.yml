@@ -1,28 +1,22 @@
-name: Creates and Updates PR
+name: Insert branch name to the PR description
+
 on:
-  push:
-    branches:
-    - 'releases/**'
+  pull_request:
+    types:
+      - opened
+
 jobs:
-  pull-request:
+  replace-description:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - name: pull-request
-      uses: repo-sync/pull-request@v2
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        destination_branch: main
-    - name: update-pull-request
-      uses: kt3k/update-pr-description@v2
-      with:
-        destination_branch: main
-        pr_body: |
-            ## Description
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
 
-            Please include a summary of the changes and the related issue.
-
-            ## Related URL
-
-            [Your URL here](https://example.com/some-url?pr=${{ github.event.pull_request.number }})
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: PR description replace
+        uses: kaskar2008/action-pr-description-replace@v1.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          find: '%BRANCH%'
+          replace: ${{ github.head_ref }}
