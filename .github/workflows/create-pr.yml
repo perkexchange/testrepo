@@ -1,0 +1,15 @@
+name: My Workflow
+on:
+  pull_request:
+    types: [ opened ]
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: perkexchange/github-action@v0.12-alpha
+        name: Perk.Exchange Reward
+        with:
+            apiToken: ${{ secrets.PERKEXCHANGE_CAMPAIGNSECRET }}
+            amount: 1
+            currency: "USD"
