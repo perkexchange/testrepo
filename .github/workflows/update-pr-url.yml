@@ -15,6 +15,7 @@ jobs:
     - name: update-pull-request
       uses: kt3k/update-pr-description@v2
       with:
+        destination_branch: main
         pr_body: |
             ## Description
 
