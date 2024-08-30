@@ -2,6 +2,6 @@
 
 Please include a summary of the changes and the related issue.
 
-## Related URL
+## Please support us
 
-[Insert related URL here] '%BRANCH%'
+[![Badge](https://perk.exchange/img/badges/perk.exchange/%BRANCH%/Payment-Made?cb=1 'Perk Badge')](https://perk.exchange/link/invoice/perk.exchange/%BRANCH%)
