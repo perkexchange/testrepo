@@ -1,0 +1,27 @@
+name: Update PR with URL
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  update-pr-url:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Update PR description with URL
+        uses: peter-evans/update-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request: ${{ github.event.pull_request.number }}
+          body: |
+            ## Description
+
+            Please include a summary of the changes and the related issue.
+
+            ## Related URL
+
+            [Your URL here](https://example.com/some-url?pr=${{ github.event.pull_request.number }})
