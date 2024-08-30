@@ -19,4 +19,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           find: '%BRANCH%'
-          replace: ${{ github.head_ref }}
+          replace: ${{ github.head_label }}
