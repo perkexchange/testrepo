@@ -12,6 +12,7 @@ jobs:
       uses: repo-sync/pull-request@v2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        destination_branch: main
     - name: update-pull-request
       uses: kt3k/update-pr-description@v2
       with:
