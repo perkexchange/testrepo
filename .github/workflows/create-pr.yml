@@ -10,6 +10,6 @@ jobs:
       - uses: perkexchange/github-action@v0.12-alpha
         name: Perk.Exchange Reward
         with:
-            apiToken: ${{ secrets.PERKEXCHANGE_CAMPAIGNSECRET }}
+            apiToken: ${{ secrets.PERKEXCHANGE_APITOKEN }}
             amount: 1
             currency: "USD"
